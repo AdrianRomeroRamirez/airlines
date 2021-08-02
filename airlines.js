@@ -25,12 +25,52 @@ let flights = [
 
 ];
 
-const user = prompt("Por favor, introduzca su nombnre.");
+let vuelosConEscsalas = 0;
+let costeTotal = 0;
+let totalVuelos = 0;
+let costeMedio = 0;
 
+// Se pide el nombre al usuario
+let user = prompt("Por favor, introduzca su nombnre.");
+
+// Si no lo introiduce, se le asigna "invitado"
+if (user === null) {
+
+    user = "Invitado";
+
+}
+
+// Se le saluda por consola
 console.log("Hola " + user);
 
-flights.forEach(fligth =>
+// Se recorre el array de vuelos mostrando los datos por consola usando la función mostrarDatos
+flights.forEach(mostrarDatos);
 
-    console.log("El vuelo con origen: " + fligth.from + " y destino: " + fligth.to + ", tiene un coste de " + fligth.cost + " y" + (fligth.scale ? " si tien escala" : " no hay escala"))
+// Muestra los datos por consola, cuenta los vuelos con escalas, el coste total de los vuelos y el total de vuelos
+function mostrarDatos(element, index, array) {
 
-);
+    console.log("El vuelo con origen: " + element.from + " y destino: " + element.to + ", tiene un coste de " + element.cost + "€ y" + (element.scale ? " si tien escala" : " no hay escala"));
+
+    costeTotal = costeTotal + element.cost;
+    totalVuelos++;
+
+    element.scale ? vuelosConEscsalas++ : vuelosConEscsalas
+
+}
+
+// Calcula el coste medio
+costeMedio = costeTotal/totalVuelos;
+
+// Muestra por consola  el coste medio 
+console.log("Todos los vuelos tienen un coste medio de " + costeMedio.toFixed(2) + "€");
+
+// Muestra por consola los vuelos con escalas
+console.log("Hay " + vuelosConEscsalas + " vuelos con escalas.");
+
+console.log("Los ultimos 5 destinos del día son:")
+
+for (i = flights.length - 1; i > flights.length - 6; i--){
+
+    console.log(flights[i].to);
+
+}
