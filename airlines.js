@@ -49,7 +49,7 @@ flights.forEach(mostrarDatos);
 // Muestra los datos por consola, cuenta los vuelos con escalas, el coste total de los vuelos y el total de vuelos
 function mostrarDatos(element, index, array) {
 
-    console.log("El vuelo con origen: " + element.from + " y destino: " + element.to + ", tiene un coste de " + element.cost + "€ y" + (element.scale ? " si tien escala" : " no hay escala"));
+    console.log("El vuelo con origen: " + element.from + " y destino: " + element.to + ", tiene un coste de " + element.cost + "€ y" + (element.scale ? " si tien escala." : " no hay escala."));
 
     costeTotal = costeTotal + element.cost;
     totalVuelos++;
@@ -69,6 +69,7 @@ console.log("Hay " + vuelosConEscsalas + " vuelos con escalas.");
 
 console.log("Los ultimos 5 destinos del día son:")
 
+// Recorre los 5 últimos vuelos
 for (i = flights.length - 1; i > flights.length - 6; i--){
 
     console.log(flights[i].to);
